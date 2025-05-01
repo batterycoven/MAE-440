@@ -1,0 +1,39 @@
+BOX        -2/2  -0.14/2  -2/2 \ comment
+                      2    0.14     2
+
+UDPRIM    supell   rx 0.5   ry 0.5   n 2.0
+rotatex 90
+translate 0 -0.5 0
+extrude 0 1 0
+
+subtract
+
+store plate
+
+#triangle
+skbeg 0 0 0 1
+linseg 0.1366 0 0
+linseg 0.0683 0 0.1183
+
+linseg 0 0 0
+
+
+skend
+extrude 0 0.025 0 
+rotatex -30
+store triangle
+mark
+restore plate
+restore triangle
+translate -0.0683 -0.07 -0.5
+store triangle1
+restore triangle1
+rotatey 90
+restore triangle1 
+rotatey 180
+restore triangle1
+rotatey 270
+restore triangle1
+union 1
+
+dump 60degnozzle.stl
